@@ -8,16 +8,19 @@ namespace COBRANZAS.Model
 {
    public class TModelsClientes
     {
-        int Id { set; get; }
-        string Identidad { set; get; }
-        string Nombre { set; get; }
-        string Direccion { set; get; }
-        string Telefono { set; get; }
-        string Correo { set; get; }
-        string Municipio { set; get; }
-        DateTime Fecha_Nacimineto { set; get; }
-        string Usuario_Creacion { set; get; }
-        string Ususario_Modificacion { set; get; }
+       public int Id { set; get; }
+       public  string Identidad { set; get; }
+       public  string Nombre { set; get; }
+       public  string Direccion { set; get; }
+       public  string Telefono { set; get; }
+       public  string Correo { set; get; }
+       public  string Municipio { set; get; }
+       public  DateTime Fecha_Nacimineto { set; get; }
+       public  DateTime Fecha_Creacion { set; get; }
+       public  DateTime Fecha_Modificacion { set; get; }
+       public  string Usuario_Creacion { set; get; }
+       public  string Ususario_Modificacion { set; get; }
+
 
     }
 }
