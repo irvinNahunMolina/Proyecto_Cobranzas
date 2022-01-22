@@ -9,7 +9,6 @@ namespace COBRANZAS.CLIENTES
 {
    public class TAD_Clientes
     {
-        TModelsClientes objClientes = new TModelsClientes();
         TParamSQL objParamSQL = new TParamSQL();
 
         public TAD_Clientes()
@@ -20,12 +19,13 @@ namespace COBRANZAS.CLIENTES
         public TModelsClientes Consultar(int Id)
         {
             DataTable dtClientes = new DataTable();
+            TModelsClientes objClientes = new TModelsClientes();
             using (SqlConnection con = new SqlConnection(objParamSQL.getStringCon()))
             {
                try
                 {
                     con.Open();
-                    SqlCommand  query = new SqlCommand($"SELECT * FROM CLIENTES WHERE ID = {Id}");
+                    SqlCommand  query = new SqlCommand($"SELECT * FROM CLIENTES WHERE ID = {Id}", con);
                     dtClientes.Load(query.ExecuteReader());
                     con.Close();
                     if(dtClientes.Rows.Count > 0)
@@ -52,7 +52,7 @@ namespace COBRANZAS.CLIENTES
             }
 
 
-            return dtClientes;
+            return objClientes;
         }
 
         public bool Guardar(TModelsClientes prmCliente)
