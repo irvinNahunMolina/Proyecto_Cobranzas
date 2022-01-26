@@ -23,9 +23,9 @@ namespace COBRANZAS.CLIENTES
                 return default;
         }
 
-        public void insertar(TModelsClientes prmClientes, string prmUsuario)
+        public bool insertar(TModelsClientes prmClientes, string prmUsuario)
         {
-            this.objAd_Clientes.Guardar(prmClientes, prmUsuario);
+            return this.objAd_Clientes.Guardar(prmClientes, prmUsuario);
         }
     }
 }

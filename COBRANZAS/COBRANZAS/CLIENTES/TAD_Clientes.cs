@@ -39,9 +39,13 @@ namespace COBRANZAS.CLIENTES
                             objClientes.Telefono = fila["TELEFONO"].ToString();
                             objClientes.Correo = fila["CORREO"].ToString();
                             objClientes.Municipio = fila["MUNICIPIO"].ToString();
-                            //objClientes.Fecha_Nacimineto = fila["FECHA_NACIMIENTO"].ToString();
                             objClientes.Usuario_Creacion = fila["USUARIO_CREACION"].ToString();
                             objClientes.Ususario_Modificacion = fila["USUARIO_MODIFICACION"].ToString();
+                            DateTime Fecha_Creacion = new DateTime(); ;
+                            objClientes.Fecha_Creacion = (DateTime.TryParse(fila["FECHA_CREACION"].ToString(), out Fecha_Creacion) ? Fecha_Creacion : Fecha_Creacion);
+                            objClientes.Fecha_Creacion.ToString();
+                            DateTime FechaNac = new DateTime();
+                            objClientes.Fecha_Nacimineto = (DateTime.TryParse(fila["FECHA_NACIMIENTO"].ToString(), out FechaNac) ? FechaNac : FechaNac);
                         }
                     }
                 }
@@ -75,18 +79,20 @@ namespace COBRANZAS.CLIENTES
                     objsql.Parameters.AddWithValue("@prmMunicipio", prmCliente.Municipio);
                     objsql.Parameters.AddWithValue("@prmFecha_Nacimineto", prmCliente.Fecha_Nacimineto);
                     objsql.Parameters.AddWithValue("@UsuarioCreacion", prmUsusario);
-                    objsql.Parameters.AddWithValue("@RESULT", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    objsql.Parameters.AddWithValue("@RESULT", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
                     objsql.ExecuteNonQuery();
+                    int Num = (int)objsql.Parameters["@RESULT"].Value;
 
-                    string Num = objsql.Parameters["@RESULT"].Value.ToString();
-                    MessageBox.Show(Num);
+                    if (Num == 1)
+                        valResult = true;
+                        //MessageBox.Show(Num);
                 }
                 catch(Exception Err)
                 {
                     MessageBox.Show($"La operacion no se pudo completar \n {Err.Message}");
                 }
             }
-                return false;
+                return valResult;
         }
 
         public bool Actualizar(TModelsClientes prmCliente)

@@ -15,6 +15,7 @@ namespace COBRANZAS.CLIENTES
 {
     public partial class frmClientes : MaterialForm
     {
+        readonly string Usuario = "Sistema";
         TCN_Clientes objCN_Clientes = new TCN_Clientes();
 
         public frmClientes()
@@ -22,12 +23,33 @@ namespace COBRANZAS.CLIENTES
             InitializeComponent();
         }
 
+        private void Limpiar()
+        {
+            txtCliente.Text = "";
+            dtpFechaNacimiento.Value = DateTime.Now;
+            txtIdentidad.Text = "";
+            txtNombre.Text = "";
+            txtDireccion.Text = "";
+            txtCorreo.Text = "";
+            txtTelefono.Text = "";
+            txtMunicipio.Text = "";
+            dtpFechaNacimiento.Text = "";
+            lblCreadoEl.Text = "";
+            lblCreadoPor.Text = "";    
+        }
+
         private void materialButton1_Click(object sender, EventArgs e)
         {
             var cliente = objCN_Clientes.consultar(txtCliente.Text);
-            txtNombre.Text = cliente.Nombre;
             txtIdentidad.Text = cliente.Identidad;
-
+            txtNombre.Text = cliente.Nombre;
+            txtDireccion.Text = cliente.Direccion;
+            txtCorreo.Text = cliente.Correo;
+            txtTelefono.Text = cliente.Telefono;
+            txtMunicipio.Text = cliente.Municipio;
+            dtpFechaNacimiento.Value = cliente.Fecha_Nacimineto;
+            lblCreadoEl.Text = $"Creado el: { cliente.Fecha_Creacion }";
+            lblCreadoPor.Text = $"Creado Por: { cliente.Usuario_Creacion }";
         }
 
         private void materialButton2_Click(object sender, EventArgs e)
@@ -37,13 +59,27 @@ namespace COBRANZAS.CLIENTES
 
             cliente.Identidad = txtIdentidad.Text;
             cliente.Nombre = txtNombre.Text;
-            cliente.Direccion = "Col. Villas Del Carmen";
+            cliente.Direccion = txtDireccion.Text;
             cliente.Telefono = txtTelefono.Text;
             cliente.Correo = txtCorreo.Text;
             cliente.Municipio = txtMunicipio.Text;
-            DateTime fechaNac = new DateTime(1991, 12, 01);
-            cliente.Fecha_Nacimineto = fechaNac;
-            this.objCN_Clientes.insertar(cliente, "Sistema");
+            cliente.Fecha_Nacimineto = dtpFechaNacimiento.Value;
+            var resp = this.objCN_Clientes.insertar(cliente, "Sistema");
+            if (resp)
+             { 
+                MessageBox.Show("El cliente se ha guardado con exito");
+                Limpiar();
+             }
+            else
+            {
+                MessageBox.Show("El cliente no ha Guardado");
+            }
+
+        }
+
+        private void materialButton3_Click(object sender, EventArgs e)
+        {
+            this.Limpiar();
         }
     }
 }
