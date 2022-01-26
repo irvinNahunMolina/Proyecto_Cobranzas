@@ -55,9 +55,38 @@ namespace COBRANZAS.CLIENTES
             return objClientes;
         }
 
-        public bool Guardar(TModelsClientes prmCliente)
+        public bool Guardar(TModelsClientes prmCliente, string prmUsusario)
         {
-            return false;
+            bool valResult = false;
+
+            using (SqlConnection con = new SqlConnection(objParamSQL.getStringCon()))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand objsql = new SqlCommand("SP_INSERTAR_CLIENTES", con);
+                    objsql.CommandType = CommandType.StoredProcedure;
+                    objsql.CommandText = "SP_INSERTAR_CLIENTES";
+                    objsql.Parameters.AddWithValue("@prmIdentidad", prmCliente.Identidad);
+                    objsql.Parameters.AddWithValue("@prmNombre", prmCliente.Nombre);
+                    objsql.Parameters.AddWithValue("@prmDireccion", prmCliente.Direccion);
+                    objsql.Parameters.AddWithValue("@prmTelefono", prmCliente.Telefono);
+                    objsql.Parameters.AddWithValue("@prmCorreo", prmCliente.Correo);
+                    objsql.Parameters.AddWithValue("@prmMunicipio", prmCliente.Municipio);
+                    objsql.Parameters.AddWithValue("@prmFecha_Nacimineto", prmCliente.Fecha_Nacimineto);
+                    objsql.Parameters.AddWithValue("@UsuarioCreacion", prmUsusario);
+                    objsql.Parameters.AddWithValue("@RESULT", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    objsql.ExecuteNonQuery();
+
+                    string Num = objsql.Parameters["@RESULT"].Value.ToString();
+                    MessageBox.Show(Num);
+                }
+                catch(Exception Err)
+                {
+                    MessageBox.Show($"La operacion no se pudo completar \n {Err.Message}");
+                }
+            }
+                return false;
         }
 
         public bool Actualizar(TModelsClientes prmCliente)
