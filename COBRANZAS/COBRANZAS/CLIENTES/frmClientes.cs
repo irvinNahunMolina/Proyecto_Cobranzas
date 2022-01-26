@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using COBRANZAS.CLIENTES;
+using COBRANZAS.Model;
 
 namespace COBRANZAS.CLIENTES
 {
@@ -27,6 +28,22 @@ namespace COBRANZAS.CLIENTES
             txtNombre.Text = cliente.Nombre;
             txtIdentidad.Text = cliente.Identidad;
 
+        }
+
+        private void materialButton2_Click(object sender, EventArgs e)
+        {
+
+            TModelsClientes cliente = new TModelsClientes();
+
+            cliente.Identidad = txtIdentidad.Text;
+            cliente.Nombre = txtNombre.Text;
+            cliente.Direccion = "Col. Villas Del Carmen";
+            cliente.Telefono = txtTelefono.Text;
+            cliente.Correo = txtCorreo.Text;
+            cliente.Municipio = txtMunicipio.Text;
+            DateTime fechaNac = new DateTime(1991, 12, 01);
+            cliente.Fecha_Nacimineto = fechaNac;
+            this.objCN_Clientes.insertar(cliente, "Sistema");
         }
     }
 }
