@@ -16,6 +16,7 @@ namespace COBRANZAS.CLIENTES
 
         }
 
+        //Consulta la informnacion de un cliente por medio de su id
         public TModelsClientes Consultar(int Id)
         {
             DataTable dtClientes = new DataTable();
@@ -59,6 +60,7 @@ namespace COBRANZAS.CLIENTES
             return objClientes;
         }
 
+        //Guarda un cliente en la base de datos
         public bool Guardar(TModelsClientes prmCliente, string prmUsusario)
         {
             bool valResult = false;
@@ -95,9 +97,40 @@ namespace COBRANZAS.CLIENTES
                 return valResult;
         }
 
-        public bool Actualizar(TModelsClientes prmCliente)
+        public bool Actualizar(TModelsClientes prmCliente, string prmUsusario)
         {
-            return false;
+            bool valResult = false;
+
+            using (SqlConnection con = new SqlConnection(objParamSQL.getStringCon()))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand objsql = new SqlCommand("SP_INSERTAR_CLIENTES", con);
+                    objsql.CommandType = CommandType.StoredProcedure;
+                    objsql.CommandText = "SP_INSERTAR_CLIENTES";
+                    objsql.Parameters.AddWithValue("@prmIdentidad", prmCliente.Identidad);
+                    objsql.Parameters.AddWithValue("@prmNombre", prmCliente.Nombre);
+                    objsql.Parameters.AddWithValue("@prmDireccion", prmCliente.Direccion);
+                    objsql.Parameters.AddWithValue("@prmTelefono", prmCliente.Telefono);
+                    objsql.Parameters.AddWithValue("@prmCorreo", prmCliente.Correo);
+                    objsql.Parameters.AddWithValue("@prmMunicipio", prmCliente.Municipio);
+                    objsql.Parameters.AddWithValue("@prmFecha_Nacimineto", prmCliente.Fecha_Nacimineto);
+                    objsql.Parameters.AddWithValue("@UsuarioCreacion", prmUsusario);
+                    objsql.Parameters.AddWithValue("@RESULT", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+                    objsql.ExecuteNonQuery();
+                    int Num = (int)objsql.Parameters["@RESULT"].Value;
+
+                    if (Num == 1)
+                        valResult = true;
+                    //MessageBox.Show(Num);
+                }
+                catch (Exception Err)
+                {
+                    MessageBox.Show($"La operacion no se pudo completar \n {Err.Message}");
+                }
+            }
+            return valResult;
         }
 
         public bool Anular( int IdCliente)

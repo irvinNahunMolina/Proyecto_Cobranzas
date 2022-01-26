@@ -23,6 +23,7 @@ namespace COBRANZAS.CLIENTES
             InitializeComponent();
         }
 
+        //Este metodo sirve para limpiar los controladores del formulario clientes
         private void Limpiar()
         {
             txtCliente.Text = "";
@@ -38,6 +39,7 @@ namespace COBRANZAS.CLIENTES
             lblCreadoPor.Text = "";    
         }
 
+        //En este boton se consulta los datos de un cliente
         private void materialButton1_Click(object sender, EventArgs e)
         {
             var cliente = objCN_Clientes.consultar(txtCliente.Text);
@@ -52,6 +54,7 @@ namespace COBRANZAS.CLIENTES
             lblCreadoPor.Text = $"Creado Por: { cliente.Usuario_Creacion }";
         }
 
+        //en este boton se Guardan los datos de un cliente
         private void materialButton2_Click(object sender, EventArgs e)
         {
 
@@ -77,6 +80,7 @@ namespace COBRANZAS.CLIENTES
 
         }
 
+        //este boton limpia los datos de un cleinte que se ha agregado
         private void materialButton3_Click(object sender, EventArgs e)
         {
             this.Limpiar();
