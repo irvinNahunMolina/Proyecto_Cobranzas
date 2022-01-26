@@ -13,6 +13,7 @@ namespace COBRANZAS.CLIENTES
     {
         TAD_Clientes objAd_Clientes = new TAD_Clientes();
 
+
         public TModelsClientes consultar(string Id)
         {
             var result = int.TryParse(Id, out int valId);

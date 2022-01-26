@@ -90,7 +90,7 @@ namespace COBRANZAS.CLIENTES
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(1295, 610);
+            this.materialCard1.Size = new System.Drawing.Size(1295, 686);
             this.materialCard1.TabIndex = 0;
             // 
             // txtIdentidad
@@ -231,7 +231,7 @@ namespace COBRANZAS.CLIENTES
             this.materialButton2.Depth = 0;
             this.materialButton2.HighEmphasis = true;
             this.materialButton2.Icon = null;
-            this.materialButton2.Location = new System.Drawing.Point(363, 548);
+            this.materialButton2.Location = new System.Drawing.Point(191, 604);
             this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton2.Name = "materialButton2";
@@ -415,12 +415,12 @@ namespace COBRANZAS.CLIENTES
             this.materialButton3.Depth = 0;
             this.materialButton3.HighEmphasis = true;
             this.materialButton3.Icon = null;
-            this.materialButton3.Location = new System.Drawing.Point(459, 548);
+            this.materialButton3.Location = new System.Drawing.Point(329, 604);
             this.materialButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton3.Name = "materialButton3";
             this.materialButton3.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton3.Size = new System.Drawing.Size(88, 36);
+            this.materialButton3.Size = new System.Drawing.Size(79, 36);
             this.materialButton3.TabIndex = 22;
             this.materialButton3.Text = "Limpiar";
             this.materialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -432,7 +432,7 @@ namespace COBRANZAS.CLIENTES
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1293, 675);
+            this.ClientSize = new System.Drawing.Size(1293, 750);
             this.Controls.Add(this.materialCard1);
             this.Name = "frmClientes";
             this.Text = "frmClientes";
