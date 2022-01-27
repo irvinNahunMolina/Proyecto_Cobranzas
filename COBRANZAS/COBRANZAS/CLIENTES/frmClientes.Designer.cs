@@ -36,7 +36,7 @@ namespace COBRANZAS.CLIENTES
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.txtNombre = new MaterialSkin.Controls.MaterialTextBox();
             this.materialListBox1 = new MaterialSkin.Controls.MaterialListBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
             this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
@@ -53,13 +53,17 @@ namespace COBRANZAS.CLIENTES
             this.lblCreadoEl = new MaterialSkin.Controls.MaterialLabel();
             this.lblCreadoPor = new MaterialSkin.Controls.MaterialLabel();
             this.materialButton3 = new MaterialSkin.Controls.MaterialButton();
+            this.lblModificadoPor = new MaterialSkin.Controls.MaterialLabel();
+            this.lblModificadoEl = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.lblModificadoPor);
+            this.materialCard1.Controls.Add(this.lblModificadoEl);
             this.materialCard1.Controls.Add(this.materialButton3);
             this.materialCard1.Controls.Add(this.lblCreadoPor);
             this.materialCard1.Controls.Add(this.lblCreadoEl);
@@ -80,7 +84,7 @@ namespace COBRANZAS.CLIENTES
             this.materialCard1.Controls.Add(this.materialLabel2);
             this.materialCard1.Controls.Add(this.txtNombre);
             this.materialCard1.Controls.Add(this.materialListBox1);
-            this.materialCard1.Controls.Add(this.dataGridView1);
+            this.materialCard1.Controls.Add(this.dgvClientes);
             this.materialCard1.Controls.Add(this.materialLabel1);
             this.materialCard1.Controls.Add(this.materialButton1);
             this.materialCard1.Depth = 0;
@@ -90,7 +94,7 @@ namespace COBRANZAS.CLIENTES
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(1295, 686);
+            this.materialCard1.Size = new System.Drawing.Size(1400, 686);
             this.materialCard1.TabIndex = 0;
             // 
             // txtIdentidad
@@ -179,18 +183,22 @@ namespace COBRANZAS.CLIENTES
             this.materialListBox1.Name = "materialListBox1";
             this.materialListBox1.SelectedIndex = -1;
             this.materialListBox1.SelectedItem = null;
-            this.materialListBox1.Size = new System.Drawing.Size(622, 227);
+            this.materialListBox1.Size = new System.Drawing.Size(774, 227);
             this.materialListBox1.TabIndex = 18;
             // 
-            // dataGridView1
+            // dgvClientes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(620, 269);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(622, 294);
-            this.dataGridView1.TabIndex = 19;
+            this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Location = new System.Drawing.Point(620, 262);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.RowHeadersWidth = 51;
+            this.dgvClientes.RowTemplate.Height = 24;
+            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClientes.Size = new System.Drawing.Size(774, 294);
+            this.dgvClientes.TabIndex = 19;
+            this.dgvClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellDoubleClick);
             // 
             // materialLabel1
             // 
@@ -388,7 +396,7 @@ namespace COBRANZAS.CLIENTES
             this.lblCreadoEl.Depth = 0;
             this.lblCreadoEl.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblCreadoEl.ForeColor = System.Drawing.Color.Gray;
-            this.lblCreadoEl.Location = new System.Drawing.Point(14, 530);
+            this.lblCreadoEl.Location = new System.Drawing.Point(518, 604);
             this.lblCreadoEl.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCreadoEl.Name = "lblCreadoEl";
             this.lblCreadoEl.Size = new System.Drawing.Size(72, 19);
@@ -401,7 +409,7 @@ namespace COBRANZAS.CLIENTES
             this.lblCreadoPor.Depth = 0;
             this.lblCreadoPor.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblCreadoPor.ForeColor = System.Drawing.Color.Gray;
-            this.lblCreadoPor.Location = new System.Drawing.Point(14, 565);
+            this.lblCreadoPor.Location = new System.Drawing.Point(518, 639);
             this.lblCreadoPor.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblCreadoPor.Name = "lblCreadoPor";
             this.lblCreadoPor.Size = new System.Drawing.Size(83, 19);
@@ -428,17 +436,44 @@ namespace COBRANZAS.CLIENTES
             this.materialButton3.UseVisualStyleBackColor = true;
             this.materialButton3.Click += new System.EventHandler(this.materialButton3_Click);
             // 
+            // lblModificadoPor
+            // 
+            this.lblModificadoPor.AutoSize = true;
+            this.lblModificadoPor.Depth = 0;
+            this.lblModificadoPor.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblModificadoPor.ForeColor = System.Drawing.Color.Gray;
+            this.lblModificadoPor.Location = new System.Drawing.Point(898, 639);
+            this.lblModificadoPor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblModificadoPor.Name = "lblModificadoPor";
+            this.lblModificadoPor.Size = new System.Drawing.Size(114, 19);
+            this.lblModificadoPor.TabIndex = 24;
+            this.lblModificadoPor.Text = "Modificado Por:";
+            // 
+            // lblModificadoEl
+            // 
+            this.lblModificadoEl.AutoSize = true;
+            this.lblModificadoEl.Depth = 0;
+            this.lblModificadoEl.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblModificadoEl.ForeColor = System.Drawing.Color.Gray;
+            this.lblModificadoEl.Location = new System.Drawing.Point(898, 604);
+            this.lblModificadoEl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblModificadoEl.Name = "lblModificadoEl";
+            this.lblModificadoEl.Size = new System.Drawing.Size(103, 19);
+            this.lblModificadoEl.TabIndex = 23;
+            this.lblModificadoEl.Text = "Modificado El:";
+            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1293, 750);
+            this.ClientSize = new System.Drawing.Size(1400, 750);
             this.Controls.Add(this.materialCard1);
             this.Name = "frmClientes";
             this.Text = "frmClientes";
+            this.Load += new System.EventHandler(this.frmClientes_Load);
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -448,7 +483,7 @@ namespace COBRANZAS.CLIENTES
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialTextBox txtNombre;
         private MaterialSkin.Controls.MaterialListBox materialListBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvClientes;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialButton materialButton1;
         private MaterialSkin.Controls.MaterialTextBox txtIdentidad;
@@ -469,5 +504,7 @@ namespace COBRANZAS.CLIENTES
         private MaterialSkin.Controls.MaterialLabel lblCreadoPor;
         private MaterialSkin.Controls.MaterialLabel lblCreadoEl;
         private MaterialSkin.Controls.MaterialButton materialButton3;
+        private MaterialSkin.Controls.MaterialLabel lblModificadoPor;
+        private MaterialSkin.Controls.MaterialLabel lblModificadoEl;
     }
 }

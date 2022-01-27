@@ -16,11 +16,14 @@ namespace COBRANZAS.CLIENTES
     public partial class frmClientes : MaterialForm
     {
         readonly string Usuario = "Sistema";
-        TCN_Clientes objCN_Clientes = new TCN_Clientes();
+        TCN_Clientes objCN_Clientes = new TCN_Clientes(); //Objeto de la capa de negocios(Clientes)
+
+        private int accion;                               // 1.Nuevo 2.Modificar 3.Anular
 
         public frmClientes()
         {
             InitializeComponent();
+            this.accion = 1;  // esta variable cuando inicie el sofware estara en modo Nuevo en opcion 1.
         }
 
         //Este metodo sirve para limpiar los controladores del formulario clientes
@@ -36,8 +39,20 @@ namespace COBRANZAS.CLIENTES
             txtMunicipio.Text = "";
             dtpFechaNacimiento.Text = "";
             lblCreadoEl.Text = "";
-            lblCreadoPor.Text = "";    
+            lblCreadoPor.Text = "";
+            lblModificadoEl.Text = "";
+            lblModificadoPor.Text = "";
+            this.accion = 1;
+            txtCliente.Enabled = true;
         }
+
+        private void CargarGrid()
+        {
+            var listclientes = this.objCN_Clientes.GetClientes();
+            dgvClientes.DataSource = listclientes;
+        }
+
+
 
         //En este boton se consulta los datos de un cliente
         private void materialButton1_Click(object sender, EventArgs e)
@@ -52,6 +67,10 @@ namespace COBRANZAS.CLIENTES
             dtpFechaNacimiento.Value = cliente.Fecha_Nacimineto;
             lblCreadoEl.Text = $"Creado el: { cliente.Fecha_Creacion }";
             lblCreadoPor.Text = $"Creado Por: { cliente.Usuario_Creacion }";
+            lblModificadoEl.Text = $"Modificado el: { cliente.Fecha_Modificacion }";
+            lblModificadoPor.Text = $"Modificado Por: { cliente.Ususario_Modificacion }";
+            this.accion = 2;
+            txtCliente.Enabled = false;
         }
 
         //en este boton se Guardan los datos de un cliente
@@ -59,7 +78,6 @@ namespace COBRANZAS.CLIENTES
         {
 
             TModelsClientes cliente = new TModelsClientes();
-
             cliente.Identidad = txtIdentidad.Text;
             cliente.Nombre = txtNombre.Text;
             cliente.Direccion = txtDireccion.Text;
@@ -67,16 +85,29 @@ namespace COBRANZAS.CLIENTES
             cliente.Correo = txtCorreo.Text;
             cliente.Municipio = txtMunicipio.Text;
             cliente.Fecha_Nacimineto = dtpFechaNacimiento.Value;
-            var resp = this.objCN_Clientes.insertar(cliente, "Sistema");
+
+            bool resp = false;
+
+            if(accion == 1)
+                resp = this.objCN_Clientes.insertar(cliente, "Sistema");
+
+            if(accion == 2)
+            {
+                cliente.Id = Convert.ToInt32(txtCliente.Text);
+                resp = this.objCN_Clientes.modificar(cliente, "Sistema");
+            }
+                
             if (resp)
-             { 
-                MessageBox.Show("El cliente se ha guardado con exito");
+            { 
+                MessageBox.Show("El cliente se ha guardado con exito", "AGREGADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
-             }
+            }
             else
             {
-                MessageBox.Show("El cliente no ha Guardado");
+                MessageBox.Show("El cliente no ha Guardado", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            this.CargarGrid();
 
         }
 
@@ -84,6 +115,30 @@ namespace COBRANZAS.CLIENTES
         private void materialButton3_Click(object sender, EventArgs e)
         {
             this.Limpiar();
+        }
+
+        private void frmClientes_Load(object sender, EventArgs e)
+        {
+            this.CargarGrid();
+        }
+
+        private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int NumFila = e.RowIndex;
+            
+            txtCliente.Text = dgvClientes.Rows[NumFila].Cells["ID"].Value.ToString();
+            txtIdentidad.Text = dgvClientes.Rows[NumFila].Cells["IDENTIDAD"].Value.ToString();
+            txtNombre.Text = dgvClientes.Rows[NumFila].Cells["NOMBRE"].Value.ToString();
+            txtDireccion.Text = dgvClientes.Rows[NumFila].Cells["DIRECCION"].Value.ToString();
+            txtTelefono.Text = dgvClientes.Rows[NumFila].Cells["TELEFONO"].Value.ToString();
+            txtCorreo.Text = dgvClientes.Rows[NumFila].Cells["CORREO"].Value.ToString();
+            txtMunicipio.Text = dgvClientes.Rows[NumFila].Cells["MUNICIPIO"].Value.ToString();
+            dtpFechaNacimiento.Text = dgvClientes.Rows[NumFila].Cells["FECHA_NACIMINETO"].Value.ToString();
+            lblCreadoEl.Text = dgvClientes.Rows[NumFila].Cells["FECHA_CREACION"].Value.ToString();
+            lblModificadoPor.Text = dgvClientes.Rows[NumFila].Cells["USUSARIO_MODIFICACION"].Value.ToString();
+            lblModificadoEl.Text = dgvClientes.Rows[NumFila].Cells["FECHA_MODIFICACION"].Value.ToString();
+            lblCreadoPor.Text = dgvClientes.Rows[NumFila].Cells["USUARIO_CREACION"].Value.ToString();
+
         }
     }
 }
