@@ -28,5 +28,15 @@ namespace COBRANZAS.CLIENTES
         {
             return this.objAd_Clientes.Guardar(prmClientes, prmUsuario);
         }
+
+        public bool modificar(TModelsClientes prmClientes, string prmUsuario)
+        {
+            return this.objAd_Clientes.Actualizar(prmClientes, prmUsuario);
+        }
+
+        public List<TModelsClientes> GetClientes()
+        {
+            return this.objAd_Clientes.GetClientes();
+        }
     }
 }
