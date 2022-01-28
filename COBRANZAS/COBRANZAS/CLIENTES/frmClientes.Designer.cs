@@ -56,6 +56,7 @@ namespace COBRANZAS.CLIENTES
             this.lblModificadoPor = new MaterialSkin.Controls.MaterialLabel();
             this.lblModificadoEl = new MaterialSkin.Controls.MaterialLabel();
             this.materialButton4 = new MaterialSkin.Controls.MaterialButton();
+            this.txtActivo = new MaterialSkin.Controls.MaterialTextBox();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
@@ -63,6 +64,7 @@ namespace COBRANZAS.CLIENTES
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.txtActivo);
             this.materialCard1.Controls.Add(this.materialButton4);
             this.materialCard1.Controls.Add(this.lblModificadoPor);
             this.materialCard1.Controls.Add(this.lblModificadoEl);
@@ -476,13 +478,30 @@ namespace COBRANZAS.CLIENTES
             this.materialButton4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton4.Name = "materialButton4";
             this.materialButton4.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton4.Size = new System.Drawing.Size(79, 36);
+            this.materialButton4.Size = new System.Drawing.Size(78, 36);
             this.materialButton4.TabIndex = 25;
             this.materialButton4.Text = "Anular";
             this.materialButton4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton4.UseAccentColor = false;
             this.materialButton4.UseVisualStyleBackColor = true;
             this.materialButton4.Click += new System.EventHandler(this.materialButton4_Click);
+            // 
+            // txtActivo
+            // 
+            this.txtActivo.AnimateReadOnly = false;
+            this.txtActivo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtActivo.Depth = 0;
+            this.txtActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtActivo.LeadingIcon = null;
+            this.txtActivo.Location = new System.Drawing.Point(200, 538);
+            this.txtActivo.MaxLength = 50;
+            this.txtActivo.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtActivo.Multiline = false;
+            this.txtActivo.Name = "txtActivo";
+            this.txtActivo.Size = new System.Drawing.Size(103, 50);
+            this.txtActivo.TabIndex = 26;
+            this.txtActivo.Text = "";
+            this.txtActivo.TrailingIcon = null;
             // 
             // frmClientes
             // 
@@ -529,5 +548,6 @@ namespace COBRANZAS.CLIENTES
         private MaterialSkin.Controls.MaterialLabel lblModificadoPor;
         private MaterialSkin.Controls.MaterialLabel lblModificadoEl;
         private MaterialSkin.Controls.MaterialButton materialButton4;
+        private MaterialSkin.Controls.MaterialTextBox txtActivo;
     }
 }
