@@ -44,8 +44,8 @@ namespace COBRANZAS.CLIENTES
             lblModificadoPor.Text = "";
             this.accion = 1;
             txtCliente.Enabled = true;
-            this.MarcarClientesDesh();
             this.CargarGrid();
+            this.MarcarClientesDesh();
         }
 
         private void CargarGrid()
@@ -154,6 +154,7 @@ namespace COBRANZAS.CLIENTES
             txtTelefono.Text = dgvClientes.Rows[NumFila].Cells["TELEFONO"].Value.ToString();
             txtCorreo.Text = dgvClientes.Rows[NumFila].Cells["CORREO"].Value.ToString();
             txtMunicipio.Text = dgvClientes.Rows[NumFila].Cells["MUNICIPIO"].Value.ToString();
+            txtActivo.Text = dgvClientes.Rows[NumFila].Cells["ACTIVO"].Value.ToString();
             dtpFechaNacimiento.Text = dgvClientes.Rows[NumFila].Cells["FECHA_NACIMINETO"].Value.ToString();
             lblCreadoEl.Text = $"Creado el: {dgvClientes.Rows[NumFila].Cells["FECHA_CREACION"].Value.ToString()}";
             lblModificadoPor.Text = $"Modificado por: {dgvClientes.Rows[NumFila].Cells["USUSARIO_MODIFICACION"].Value.ToString()}";
