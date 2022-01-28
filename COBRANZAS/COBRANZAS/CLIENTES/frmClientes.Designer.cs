@@ -55,6 +55,7 @@ namespace COBRANZAS.CLIENTES
             this.materialButton3 = new MaterialSkin.Controls.MaterialButton();
             this.lblModificadoPor = new MaterialSkin.Controls.MaterialLabel();
             this.lblModificadoEl = new MaterialSkin.Controls.MaterialLabel();
+            this.materialButton4 = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +63,7 @@ namespace COBRANZAS.CLIENTES
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.materialButton4);
             this.materialCard1.Controls.Add(this.lblModificadoPor);
             this.materialCard1.Controls.Add(this.lblModificadoEl);
             this.materialCard1.Controls.Add(this.materialButton3);
@@ -239,7 +241,7 @@ namespace COBRANZAS.CLIENTES
             this.materialButton2.Depth = 0;
             this.materialButton2.HighEmphasis = true;
             this.materialButton2.Icon = null;
-            this.materialButton2.Location = new System.Drawing.Point(191, 604);
+            this.materialButton2.Location = new System.Drawing.Point(127, 604);
             this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton2.Name = "materialButton2";
@@ -423,7 +425,7 @@ namespace COBRANZAS.CLIENTES
             this.materialButton3.Depth = 0;
             this.materialButton3.HighEmphasis = true;
             this.materialButton3.Icon = null;
-            this.materialButton3.Location = new System.Drawing.Point(329, 604);
+            this.materialButton3.Location = new System.Drawing.Point(244, 604);
             this.materialButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton3.Name = "materialButton3";
@@ -461,6 +463,26 @@ namespace COBRANZAS.CLIENTES
             this.lblModificadoEl.Size = new System.Drawing.Size(103, 19);
             this.lblModificadoEl.TabIndex = 23;
             this.lblModificadoEl.Text = "Modificado El:";
+            // 
+            // materialButton4
+            // 
+            this.materialButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton4.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton4.Depth = 0;
+            this.materialButton4.HighEmphasis = true;
+            this.materialButton4.Icon = null;
+            this.materialButton4.Location = new System.Drawing.Point(354, 604);
+            this.materialButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton4.Name = "materialButton4";
+            this.materialButton4.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton4.Size = new System.Drawing.Size(79, 36);
+            this.materialButton4.TabIndex = 25;
+            this.materialButton4.Text = "Anular";
+            this.materialButton4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton4.UseAccentColor = false;
+            this.materialButton4.UseVisualStyleBackColor = true;
+            this.materialButton4.Click += new System.EventHandler(this.materialButton4_Click);
             // 
             // frmClientes
             // 
@@ -506,5 +528,6 @@ namespace COBRANZAS.CLIENTES
         private MaterialSkin.Controls.MaterialButton materialButton3;
         private MaterialSkin.Controls.MaterialLabel lblModificadoPor;
         private MaterialSkin.Controls.MaterialLabel lblModificadoEl;
+        private MaterialSkin.Controls.MaterialButton materialButton4;
     }
 }
