@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using COBRANZAS.Model;
 using COBRANZAS.CLIENTES;
 using System.Data;
+using System.Windows.Forms;
 
 namespace COBRANZAS.CLIENTES
 {
@@ -32,6 +33,21 @@ namespace COBRANZAS.CLIENTES
         public bool modificar(TModelsClientes prmClientes, string prmUsuario)
         {
             return this.objAd_Clientes.Actualizar(prmClientes, prmUsuario);
+        }
+
+        public bool anular(string prmIDCliente)
+        {
+            bool resp = false;
+            if(int.TryParse(prmIDCliente, out int valid))
+            {
+                resp = this.objAd_Clientes.Anular(valid);
+            }
+            else
+            {
+                MessageBox.Show("El valor de id es invalido.","ADVERTENCIA",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+
+            return resp;
         }
 
         public List<TModelsClientes> GetClientes()

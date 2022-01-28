@@ -44,9 +44,15 @@ namespace COBRANZAS.CLIENTES
                             objClientes.Municipio = fila["MUNICIPIO"].ToString();
                             objClientes.Usuario_Creacion = fila["USUARIO_CREACION"].ToString();
                             objClientes.Ususario_Modificacion = fila["USUARIO_MODIFICACION"].ToString();
+
                             DateTime Fecha_Creacion = new DateTime(); ;
                             objClientes.Fecha_Creacion = (DateTime.TryParse(fila["FECHA_CREACION"].ToString(), out Fecha_Creacion) ? Fecha_Creacion : Fecha_Creacion);
                             objClientes.Fecha_Creacion.ToString();
+
+                            DateTime Fecha_Modificacion = new DateTime(); ;
+                            objClientes.Fecha_Modificacion = (DateTime.TryParse(fila["FECHA_MODIFICACION"].ToString(), out Fecha_Modificacion) ? Fecha_Modificacion : Fecha_Modificacion);
+                            objClientes.Fecha_Modificacion.ToString();
+
                             DateTime FechaNac = new DateTime();
                             objClientes.Fecha_Nacimineto = (DateTime.TryParse(fila["FECHA_NACIMIENTO"].ToString(), out FechaNac) ? FechaNac : FechaNac);
                         }
@@ -69,6 +75,8 @@ namespace COBRANZAS.CLIENTES
 
             using(SqlConnection con = new SqlConnection(objParamSQL.getStringCon()) )
             {
+                DateTime Fecha_Creacion = new DateTime();
+                DateTime Fecha_Modificacion = new DateTime();
                 try
                 {
                     con.Open();
@@ -88,9 +96,10 @@ namespace COBRANZAS.CLIENTES
                                 Telefono = fila["TELEFONO"].ToString(),
                                 Correo = fila["CORREO"].ToString(),
                                 Municipio = fila["MUNICIPIO"].ToString(),
-                                Fecha_Nacimineto = (DateTime)fila["FECHA_NACIMIENTO"],
-                                //Fecha_Creacion = (DateTime)fila["FECHA_CREACION"],
-                                //Fecha_Modificacion = (DateTime)fila["FECHA_MODIFICACION"],
+                                Activo = (fila["ACTIVO"].ToString() == "true" ? true : false),
+                                Fecha_Nacimineto = (DateTime)fila["FECHA_NACIMIENTO"],                                 
+                                Fecha_Creacion = (DateTime.TryParse(fila["FECHA_CREACION"].ToString(), out Fecha_Creacion) ? Fecha_Creacion : Fecha_Creacion),
+                                Fecha_Modificacion = (DateTime.TryParse(fila["FECHA_MODIFICACION"].ToString(), out Fecha_Modificacion) ? Fecha_Modificacion : Fecha_Modificacion),                               
                                 Usuario_Creacion = fila["USUARIO_CREACION"].ToString(),
                                 Ususario_Modificacion = fila["USUARIO_MODIFICACION"].ToString()
                             });
@@ -184,7 +193,31 @@ namespace COBRANZAS.CLIENTES
 
         public bool Anular( int IdCliente)
         {
-            return false;
+            bool valResult = false;
+
+            using (SqlConnection con = new SqlConnection(objParamSQL.getStringCon()))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand objsql = new SqlCommand("SP_ANULAR_CLIENTES", con);
+                    objsql.CommandType = CommandType.StoredProcedure;
+                    objsql.CommandText = "SP_ANULAR_CLIENTES";
+                    objsql.Parameters.AddWithValue("@prmID", IdCliente);
+                    objsql.Parameters.AddWithValue("@RESULT", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+                    objsql.ExecuteNonQuery();
+                    int Num = (int)objsql.Parameters["@RESULT"].Value;
+
+                    if (Num == 1)
+                        valResult = true;
+                    //MessageBox.Show(Num);
+                }
+                catch (Exception Err)
+                {
+                    MessageBox.Show($"La operacion no se pudo completar \n {Err.Message}");
+                }
+            }
+            return valResult;
         }
     }
 }

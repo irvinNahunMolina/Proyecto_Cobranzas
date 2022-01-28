@@ -44,12 +44,33 @@ namespace COBRANZAS.CLIENTES
             lblModificadoPor.Text = "";
             this.accion = 1;
             txtCliente.Enabled = true;
+            this.MarcarClientesDesh();
+            this.CargarGrid();
         }
 
         private void CargarGrid()
         {
             var listclientes = this.objCN_Clientes.GetClientes();
             dgvClientes.DataSource = listclientes;
+        }
+
+        private void MarcarClientesDesh()
+        {
+            int NumFila = 0;
+            NumFila = dgvClientes.Rows.Count;
+            if(NumFila > 0)
+            {
+                for(int i=0; i < NumFila; i++)
+                {
+                    String valActivo = "";
+                    valActivo = dgvClientes.Rows[i].Cells["ACTIVO"].Value.ToString();
+
+                    if(valActivo == "false")
+                    {
+                        dgvClientes.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(250,102,100); 
+                    }
+                }
+            }
         }
 
 
@@ -134,11 +155,16 @@ namespace COBRANZAS.CLIENTES
             txtCorreo.Text = dgvClientes.Rows[NumFila].Cells["CORREO"].Value.ToString();
             txtMunicipio.Text = dgvClientes.Rows[NumFila].Cells["MUNICIPIO"].Value.ToString();
             dtpFechaNacimiento.Text = dgvClientes.Rows[NumFila].Cells["FECHA_NACIMINETO"].Value.ToString();
-            lblCreadoEl.Text = dgvClientes.Rows[NumFila].Cells["FECHA_CREACION"].Value.ToString();
-            lblModificadoPor.Text = dgvClientes.Rows[NumFila].Cells["USUSARIO_MODIFICACION"].Value.ToString();
-            lblModificadoEl.Text = dgvClientes.Rows[NumFila].Cells["FECHA_MODIFICACION"].Value.ToString();
-            lblCreadoPor.Text = dgvClientes.Rows[NumFila].Cells["USUARIO_CREACION"].Value.ToString();
+            lblCreadoEl.Text = $"Creado el: {dgvClientes.Rows[NumFila].Cells["FECHA_CREACION"].Value.ToString()}";
+            lblModificadoPor.Text = $"Modificado por: {dgvClientes.Rows[NumFila].Cells["USUSARIO_MODIFICACION"].Value.ToString()}";
+            lblModificadoEl.Text = $"Modificado el: {dgvClientes.Rows[NumFila].Cells["FECHA_MODIFICACION"].Value.ToString()}";
+            lblCreadoPor.Text = $"Creado por: {dgvClientes.Rows[NumFila].Cells["USUARIO_CREACION"].Value.ToString()}";
+            this.accion = 2;
+        }
 
+        private void materialButton4_Click(object sender, EventArgs e)
+        {
+            this.objCN_Clientes.anular(txtCliente.Text);
         }
     }
 }
