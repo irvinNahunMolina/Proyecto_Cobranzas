@@ -233,7 +233,7 @@ namespace COBRANZAS.CLIENTES
             this.txtDireccion.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtDireccion.LeadingIcon = null;
             this.txtDireccion.Location = new System.Drawing.Point(127, 208);
-            this.txtDireccion.MaxLength = 50;
+            this.txtDireccion.MaxLength = 500;
             this.txtDireccion.MouseState = MaterialSkin.MouseState.OUT;
             this.txtDireccion.Multiline = false;
             this.txtDireccion.Name = "txtDireccion";
@@ -250,7 +250,7 @@ namespace COBRANZAS.CLIENTES
             this.txtMunicipio.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtMunicipio.LeadingIcon = null;
             this.txtMunicipio.Location = new System.Drawing.Point(127, 418);
-            this.txtMunicipio.MaxLength = 50;
+            this.txtMunicipio.MaxLength = 100;
             this.txtMunicipio.MouseState = MaterialSkin.MouseState.OUT;
             this.txtMunicipio.Multiline = false;
             this.txtMunicipio.Name = "txtMunicipio";
@@ -279,7 +279,7 @@ namespace COBRANZAS.CLIENTES
             this.txtTelefono.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtTelefono.LeadingIcon = null;
             this.txtTelefono.Location = new System.Drawing.Point(127, 345);
-            this.txtTelefono.MaxLength = 50;
+            this.txtTelefono.MaxLength = 8;
             this.txtTelefono.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelefono.Multiline = false;
             this.txtTelefono.Name = "txtTelefono";
@@ -308,7 +308,7 @@ namespace COBRANZAS.CLIENTES
             this.txtCorreo.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtCorreo.LeadingIcon = null;
             this.txtCorreo.Location = new System.Drawing.Point(127, 275);
-            this.txtCorreo.MaxLength = 50;
+            this.txtCorreo.MaxLength = 100;
             this.txtCorreo.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCorreo.Multiline = false;
             this.txtCorreo.Name = "txtCorreo";
@@ -357,7 +357,7 @@ namespace COBRANZAS.CLIENTES
             this.txtIdentidad.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtIdentidad.LeadingIcon = null;
             this.txtIdentidad.Location = new System.Drawing.Point(127, 76);
-            this.txtIdentidad.MaxLength = 50;
+            this.txtIdentidad.MaxLength = 13;
             this.txtIdentidad.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIdentidad.Multiline = false;
             this.txtIdentidad.Name = "txtIdentidad";
@@ -415,7 +415,7 @@ namespace COBRANZAS.CLIENTES
             this.txtNombre.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtNombre.LeadingIcon = null;
             this.txtNombre.Location = new System.Drawing.Point(127, 138);
-            this.txtNombre.MaxLength = 50;
+            this.txtNombre.MaxLength = 350;
             this.txtNombre.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNombre.Multiline = false;
             this.txtNombre.Name = "txtNombre";

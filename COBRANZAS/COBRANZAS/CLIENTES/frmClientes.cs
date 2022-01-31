@@ -79,13 +79,14 @@ namespace COBRANZAS.CLIENTES
         private void materialButton1_Click(object sender, EventArgs e)
         {
             var cliente = objCN_Clientes.consultar(txtCliente.Text);
+
             txtIdentidad.Text = cliente.Identidad;
             txtNombre.Text = cliente.Nombre;
             txtDireccion.Text = cliente.Direccion;
             txtCorreo.Text = cliente.Correo;
             txtTelefono.Text = cliente.Telefono;
             txtMunicipio.Text = cliente.Municipio;
-            dtpFechaNacimiento.Value = cliente.Fecha_Nacimineto;
+            dtpFechaNacimiento.Value = cliente.Identidad != null ? cliente.Fecha_Nacimineto : DateTime.Now; // condicion de una linea 
             lblCreadoEl.Text = $"Creado el: { cliente.Fecha_Creacion }";
             lblCreadoPor.Text = $"Creado Por: { cliente.Usuario_Creacion }";
             lblModificadoEl.Text = $"Modificado el: { cliente.Fecha_Modificacion }";
@@ -107,29 +108,37 @@ namespace COBRANZAS.CLIENTES
             cliente.Municipio = txtMunicipio.Text;
             cliente.Fecha_Nacimineto = dtpFechaNacimiento.Value;
 
+            string msj_Valid = objCN_Clientes.validar(cliente);
             bool resp = false;
 
-            if(accion == 1)
-                resp = this.objCN_Clientes.insertar(cliente, "Sistema");
-
-            if(accion == 2)
+            if (msj_Valid == "")
             {
-                cliente.Id = Convert.ToInt32(txtCliente.Text);
-                resp = this.objCN_Clientes.modificar(cliente, "Sistema");
-            }
-                
-            if (resp)
-            { 
-                MessageBox.Show("El cliente se ha guardado con exito", "AGREGADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Limpiar();
+                if (accion == 1)
+                    resp = this.objCN_Clientes.insertar(cliente, "Sistema");
+
+                if (accion == 2)
+                {
+                    cliente.Id = Convert.ToInt32(txtCliente.Text);
+                    resp = this.objCN_Clientes.modificar(cliente, "Sistema");
+                }
+
+                if (resp)
+                {
+                    MessageBox.Show("El cliente se ha guardado con exito", "AGREGADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
+                    this.CargarGrid();
+                }
+                else
+                {
+                    MessageBox.Show("El cliente no ha Guardado", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                                
             }
             else
             {
-                MessageBox.Show("El cliente no ha Guardado", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            this.CargarGrid();
-
+                MessageBox.Show(msj_Valid, "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }     
+                        
         }
 
         //este boton limpia los datos de un cliente que se ha agregado
