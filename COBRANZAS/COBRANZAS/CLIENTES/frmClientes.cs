@@ -45,13 +45,13 @@ namespace COBRANZAS.CLIENTES
             this.accion = 1;
             txtCliente.Enabled = true;
             this.CargarGrid();
-            this.MarcarClientesDesh();
         }
 
         private void CargarGrid()
         {
             var listclientes = this.objCN_Clientes.GetClientes();
             dgvClientes.DataSource = listclientes;
+            this.MarcarClientesDesh();
         }
 
         private void MarcarClientesDesh()
@@ -65,7 +65,7 @@ namespace COBRANZAS.CLIENTES
                     String valActivo = "";
                     valActivo = dgvClientes.Rows[i].Cells["ACTIVO"].Value.ToString();
 
-                    if(valActivo == "false")
+                    if(valActivo == "False")
                     {
                         dgvClientes.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(250,102,100); 
                     }
@@ -132,7 +132,7 @@ namespace COBRANZAS.CLIENTES
 
         }
 
-        //este boton limpia los datos de un cleinte que se ha agregado
+        //este boton limpia los datos de un cliente que se ha agregado
         private void materialButton3_Click(object sender, EventArgs e)
         {
             this.Limpiar();
@@ -141,6 +141,7 @@ namespace COBRANZAS.CLIENTES
         private void frmClientes_Load(object sender, EventArgs e)
         {
             this.CargarGrid();
+            this.MarcarClientesDesh();
         }
 
         private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -154,7 +155,7 @@ namespace COBRANZAS.CLIENTES
             txtTelefono.Text = dgvClientes.Rows[NumFila].Cells["TELEFONO"].Value.ToString();
             txtCorreo.Text = dgvClientes.Rows[NumFila].Cells["CORREO"].Value.ToString();
             txtMunicipio.Text = dgvClientes.Rows[NumFila].Cells["MUNICIPIO"].Value.ToString();
-            txtActivo.Text = dgvClientes.Rows[NumFila].Cells["ACTIVO"].Value.ToString();
+            //txtActivo.Text = dgvClientes.Rows[NumFila].Cells["ACTIVO"].Value.ToString();
             dtpFechaNacimiento.Text = dgvClientes.Rows[NumFila].Cells["FECHA_NACIMINETO"].Value.ToString();
             lblCreadoEl.Text = $"Creado el: {dgvClientes.Rows[NumFila].Cells["FECHA_CREACION"].Value.ToString()}";
             lblModificadoPor.Text = $"Modificado por: {dgvClientes.Rows[NumFila].Cells["USUSARIO_MODIFICACION"].Value.ToString()}";
@@ -165,7 +166,23 @@ namespace COBRANZAS.CLIENTES
 
         private void materialButton4_Click(object sender, EventArgs e)
         {
-            this.objCN_Clientes.anular(txtCliente.Text);
+            if (!(string.IsNullOrWhiteSpace(txtCliente.Text)))
+            {
+                if (this.objCN_Clientes.anular(txtCliente.Text))
+                {
+                    MessageBox.Show("El cliente se ha anulado exitosamente", "ACEPTAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show("El cliente no se ha anulado", "ACEPTAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Es necesario Seleccionar un Cliente", "ACEPTAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
     }
 }
