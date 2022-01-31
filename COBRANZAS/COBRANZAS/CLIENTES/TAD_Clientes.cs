@@ -96,7 +96,7 @@ namespace COBRANZAS.CLIENTES
                                 Telefono = fila["TELEFONO"].ToString(),
                                 Correo = fila["CORREO"].ToString(),
                                 Municipio = fila["MUNICIPIO"].ToString(),
-                                Activo = (fila["ACTIVO"].ToString() == "true" ? true : false),
+                                Activo = (fila["ACTIVO"].ToString() == "True" ? true : false),
                                 Fecha_Nacimineto = (DateTime)fila["FECHA_NACIMIENTO"],                                 
                                 Fecha_Creacion = (DateTime.TryParse(fila["FECHA_CREACION"].ToString(), out Fecha_Creacion) ? Fecha_Creacion : Fecha_Creacion),
                                 Fecha_Modificacion = (DateTime.TryParse(fila["FECHA_MODIFICACION"].ToString(), out Fecha_Modificacion) ? Fecha_Modificacion : Fecha_Modificacion),                               
