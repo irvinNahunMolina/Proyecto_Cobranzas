@@ -47,6 +47,7 @@ namespace COBRANZAS.CLIENTES
             this.CargarGrid();
         }
 
+        // Este metodo Nos carga los clientes en el grid del formulario Clientes
         private void CargarGrid()
         {
             var listclientes = this.objCN_Clientes.GetClientes();
@@ -54,6 +55,7 @@ namespace COBRANZAS.CLIENTES
             this.MarcarClientesDesh();
         }
 
+        //Este metodo nos marca de color rojo los clientes que estan anulados
         private void MarcarClientesDesh()
         {
             int NumFila = 0;

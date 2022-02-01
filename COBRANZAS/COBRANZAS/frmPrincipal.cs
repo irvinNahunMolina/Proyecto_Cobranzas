@@ -1,6 +1,7 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using COBRANZAS.CLIENTES;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,6 +24,10 @@ namespace COBRANZAS
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue500, Primary.BlueGrey300, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
-
+        private void registroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmClientes objClientes = new frmClientes();
+            objClientes.Show();
+        }
     }
 }
