@@ -69,7 +69,10 @@ namespace COBRANZAS.CLIENTES
 
                     if(valActivo == "False")
                     {
-                        dgvClientes.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(250,102,100); 
+                        dgvClientes.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(245,138,114); 
+                    }else
+                    {
+                        dgvClientes.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(159, 154, 152);
                     }
                 }
             }
