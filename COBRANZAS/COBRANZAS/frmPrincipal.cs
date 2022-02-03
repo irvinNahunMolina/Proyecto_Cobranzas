@@ -29,5 +29,7 @@ namespace COBRANZAS
             frmClientes objClientes = new frmClientes();
             objClientes.Show();
         }
+
+        
     }
 }

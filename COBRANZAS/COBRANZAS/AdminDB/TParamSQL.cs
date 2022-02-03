@@ -13,7 +13,7 @@ namespace COBRANZAS.AdminDB
 
         public TParamSQL()
         {
-            objBuilder.DataSource = "IRVIN\\SQLEXPRESS";
+            objBuilder.DataSource = "DESKTOP-MIE85AK";
             objBuilder.InitialCatalog = "PROYECTO_CSHARP";
             objBuilder.UserID = "sa";
             objBuilder.Password = "itempo%123";

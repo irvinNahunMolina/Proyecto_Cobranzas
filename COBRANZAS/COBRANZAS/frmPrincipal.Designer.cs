@@ -84,6 +84,12 @@ namespace COBRANZAS
             this.accesosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parametrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabReportes = new System.Windows.Forms.TabPage();
+            this.tabSelectorReportes = new MaterialSkin.Controls.MaterialTabSelector();
+            this.tabOpcionReportes = new MaterialSkin.Controls.MaterialTabControl();
+            this.tabReporteClientes = new System.Windows.Forms.TabPage();
+            this.reporteClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabMenuPrincipal.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabOpcionClientes.SuspendLayout();
@@ -96,6 +102,8 @@ namespace COBRANZAS
             this.tabConfiguraciones.SuspendLayout();
             this.tabOpcionConfiguraciones.SuspendLayout();
             this.menuPrincipal.SuspendLayout();
+            this.tabReportes.SuspendLayout();
+            this.tabOpcionReportes.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMenuPrincipal
@@ -105,11 +113,12 @@ namespace COBRANZAS
             this.tabMenuPrincipal.Controls.Add(this.tabMorosidad);
             this.tabMenuPrincipal.Controls.Add(this.tabCobros);
             this.tabMenuPrincipal.Controls.Add(this.tabConfiguraciones);
+            this.tabMenuPrincipal.Controls.Add(this.tabReportes);
             this.tabMenuPrincipal.Depth = 0;
             this.tabMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabMenuPrincipal.ImageList = this.listaImagenes;
             this.tabMenuPrincipal.Location = new System.Drawing.Point(2, 76);
-            this.tabMenuPrincipal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabMenuPrincipal.Margin = new System.Windows.Forms.Padding(2);
             this.tabMenuPrincipal.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabMenuPrincipal.Multiline = true;
             this.tabMenuPrincipal.Name = "tabMenuPrincipal";
@@ -123,9 +132,9 @@ namespace COBRANZAS
             this.tabClientes.Controls.Add(this.tabOpcionClientes);
             this.tabClientes.ImageKey = "admin_user.png";
             this.tabClientes.Location = new System.Drawing.Point(4, 23);
-            this.tabClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabClientes.Margin = new System.Windows.Forms.Padding(2);
             this.tabClientes.Name = "tabClientes";
-            this.tabClientes.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabClientes.Padding = new System.Windows.Forms.Padding(2);
             this.tabClientes.Size = new System.Drawing.Size(936, 469);
             this.tabClientes.TabIndex = 0;
             this.tabClientes.Text = "Clientes";
@@ -140,7 +149,7 @@ namespace COBRANZAS
             this.tabSelectorClientes.Depth = 0;
             this.tabSelectorClientes.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.tabSelectorClientes.Location = new System.Drawing.Point(0, 0);
-            this.tabSelectorClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabSelectorClientes.Margin = new System.Windows.Forms.Padding(2);
             this.tabSelectorClientes.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabSelectorClientes.Name = "tabSelectorClientes";
             this.tabSelectorClientes.Size = new System.Drawing.Size(938, 39);
@@ -157,7 +166,7 @@ namespace COBRANZAS
             this.tabOpcionClientes.Depth = 0;
             this.tabOpcionClientes.ImageList = this.listaImagenes;
             this.tabOpcionClientes.Location = new System.Drawing.Point(0, 44);
-            this.tabOpcionClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabOpcionClientes.Margin = new System.Windows.Forms.Padding(2);
             this.tabOpcionClientes.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabOpcionClientes.Multiline = true;
             this.tabOpcionClientes.Name = "tabOpcionClientes";
@@ -169,9 +178,9 @@ namespace COBRANZAS
             // 
             this.tabRegistros.ImageKey = "registrar.png";
             this.tabRegistros.Location = new System.Drawing.Point(4, 23);
-            this.tabRegistros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabRegistros.Margin = new System.Windows.Forms.Padding(2);
             this.tabRegistros.Name = "tabRegistros";
-            this.tabRegistros.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabRegistros.Padding = new System.Windows.Forms.Padding(2);
             this.tabRegistros.Size = new System.Drawing.Size(932, 405);
             this.tabRegistros.TabIndex = 0;
             this.tabRegistros.Text = "Registro";
@@ -181,10 +190,10 @@ namespace COBRANZAS
             // 
             this.tabClientesConsultas.ImageKey = "consultar.png";
             this.tabClientesConsultas.Location = new System.Drawing.Point(4, 23);
-            this.tabClientesConsultas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabClientesConsultas.Margin = new System.Windows.Forms.Padding(2);
             this.tabClientesConsultas.Name = "tabClientesConsultas";
-            this.tabClientesConsultas.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabClientesConsultas.Size = new System.Drawing.Size(932, 406);
+            this.tabClientesConsultas.Padding = new System.Windows.Forms.Padding(2);
+            this.tabClientesConsultas.Size = new System.Drawing.Size(932, 398);
             this.tabClientesConsultas.TabIndex = 1;
             this.tabClientesConsultas.Text = "Consultas";
             this.tabClientesConsultas.UseVisualStyleBackColor = true;
@@ -200,6 +209,8 @@ namespace COBRANZAS
             this.listaImagenes.Images.SetKeyName(4, "Servicios.png");
             this.listaImagenes.Images.SetKeyName(5, "registrar.png");
             this.listaImagenes.Images.SetKeyName(6, "consultar.png");
+            this.listaImagenes.Images.SetKeyName(7, "Reporte.png");
+            this.listaImagenes.Images.SetKeyName(8, "Reporte_2.png");
             // 
             // tabServicios
             // 
@@ -207,10 +218,10 @@ namespace COBRANZAS
             this.tabServicios.Controls.Add(this.tabOpcionServicios);
             this.tabServicios.ImageKey = "Servicios.png";
             this.tabServicios.Location = new System.Drawing.Point(4, 23);
-            this.tabServicios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabServicios.Margin = new System.Windows.Forms.Padding(2);
             this.tabServicios.Name = "tabServicios";
-            this.tabServicios.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabServicios.Size = new System.Drawing.Size(936, 470);
+            this.tabServicios.Padding = new System.Windows.Forms.Padding(2);
+            this.tabServicios.Size = new System.Drawing.Size(936, 469);
             this.tabServicios.TabIndex = 1;
             this.tabServicios.Text = "Servicios";
             this.tabServicios.UseVisualStyleBackColor = true;
@@ -224,7 +235,7 @@ namespace COBRANZAS
             this.tabSelectorServicios.Depth = 0;
             this.tabSelectorServicios.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.tabSelectorServicios.Location = new System.Drawing.Point(-2, -2);
-            this.tabSelectorServicios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabSelectorServicios.Margin = new System.Windows.Forms.Padding(2);
             this.tabSelectorServicios.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabSelectorServicios.Name = "tabSelectorServicios";
             this.tabSelectorServicios.Size = new System.Drawing.Size(938, 39);
@@ -241,7 +252,7 @@ namespace COBRANZAS
             this.tabOpcionServicios.Controls.Add(this.tabServicioPrecios);
             this.tabOpcionServicios.Depth = 0;
             this.tabOpcionServicios.Location = new System.Drawing.Point(-2, 42);
-            this.tabOpcionServicios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabOpcionServicios.Margin = new System.Windows.Forms.Padding(2);
             this.tabOpcionServicios.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabOpcionServicios.Multiline = true;
             this.tabOpcionServicios.Name = "tabOpcionServicios";
@@ -252,9 +263,9 @@ namespace COBRANZAS
             // tabServicioRegistro
             // 
             this.tabServicioRegistro.Location = new System.Drawing.Point(4, 22);
-            this.tabServicioRegistro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabServicioRegistro.Margin = new System.Windows.Forms.Padding(2);
             this.tabServicioRegistro.Name = "tabServicioRegistro";
-            this.tabServicioRegistro.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabServicioRegistro.Padding = new System.Windows.Forms.Padding(2);
             this.tabServicioRegistro.Size = new System.Drawing.Size(932, 407);
             this.tabServicioRegistro.TabIndex = 0;
             this.tabServicioRegistro.Text = "Registro";
@@ -263,9 +274,9 @@ namespace COBRANZAS
             // tabServicioConsulta
             // 
             this.tabServicioConsulta.Location = new System.Drawing.Point(4, 22);
-            this.tabServicioConsulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabServicioConsulta.Margin = new System.Windows.Forms.Padding(2);
             this.tabServicioConsulta.Name = "tabServicioConsulta";
-            this.tabServicioConsulta.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabServicioConsulta.Padding = new System.Windows.Forms.Padding(2);
             this.tabServicioConsulta.Size = new System.Drawing.Size(932, 407);
             this.tabServicioConsulta.TabIndex = 1;
             this.tabServicioConsulta.Text = "Consultas";
@@ -274,7 +285,7 @@ namespace COBRANZAS
             // tabServicioPrecios
             // 
             this.tabServicioPrecios.Location = new System.Drawing.Point(4, 22);
-            this.tabServicioPrecios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabServicioPrecios.Margin = new System.Windows.Forms.Padding(2);
             this.tabServicioPrecios.Name = "tabServicioPrecios";
             this.tabServicioPrecios.Size = new System.Drawing.Size(932, 407);
             this.tabServicioPrecios.TabIndex = 2;
@@ -287,9 +298,9 @@ namespace COBRANZAS
             this.tabMorosidad.Controls.Add(this.tabOpcionMorosidad);
             this.tabMorosidad.ImageKey = "morosidad.png";
             this.tabMorosidad.Location = new System.Drawing.Point(4, 23);
-            this.tabMorosidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabMorosidad.Margin = new System.Windows.Forms.Padding(2);
             this.tabMorosidad.Name = "tabMorosidad";
-            this.tabMorosidad.Size = new System.Drawing.Size(936, 470);
+            this.tabMorosidad.Size = new System.Drawing.Size(936, 469);
             this.tabMorosidad.TabIndex = 2;
             this.tabMorosidad.Text = "Morosidad";
             this.tabMorosidad.UseVisualStyleBackColor = true;
@@ -303,7 +314,7 @@ namespace COBRANZAS
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTabSelector1.Location = new System.Drawing.Point(-2, -2);
-            this.materialTabSelector1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.materialTabSelector1.Margin = new System.Windows.Forms.Padding(2);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
             this.materialTabSelector1.Size = new System.Drawing.Size(938, 39);
@@ -320,7 +331,7 @@ namespace COBRANZAS
             this.tabOpcionMorosidad.Controls.Add(this.tabMorosidadNotificaciones);
             this.tabOpcionMorosidad.Depth = 0;
             this.tabOpcionMorosidad.Location = new System.Drawing.Point(-2, 42);
-            this.tabOpcionMorosidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabOpcionMorosidad.Margin = new System.Windows.Forms.Padding(2);
             this.tabOpcionMorosidad.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabOpcionMorosidad.Multiline = true;
             this.tabOpcionMorosidad.Name = "tabOpcionMorosidad";
@@ -331,9 +342,9 @@ namespace COBRANZAS
             // tabMorosidadListaPagos
             // 
             this.tabMorosidadListaPagos.Location = new System.Drawing.Point(4, 22);
-            this.tabMorosidadListaPagos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabMorosidadListaPagos.Margin = new System.Windows.Forms.Padding(2);
             this.tabMorosidadListaPagos.Name = "tabMorosidadListaPagos";
-            this.tabMorosidadListaPagos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabMorosidadListaPagos.Padding = new System.Windows.Forms.Padding(2);
             this.tabMorosidadListaPagos.Size = new System.Drawing.Size(932, 407);
             this.tabMorosidadListaPagos.TabIndex = 0;
             this.tabMorosidadListaPagos.Text = "Lista de Mora";
@@ -342,9 +353,9 @@ namespace COBRANZAS
             // tabMorosidadPlanesPago
             // 
             this.tabMorosidadPlanesPago.Location = new System.Drawing.Point(4, 22);
-            this.tabMorosidadPlanesPago.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabMorosidadPlanesPago.Margin = new System.Windows.Forms.Padding(2);
             this.tabMorosidadPlanesPago.Name = "tabMorosidadPlanesPago";
-            this.tabMorosidadPlanesPago.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabMorosidadPlanesPago.Padding = new System.Windows.Forms.Padding(2);
             this.tabMorosidadPlanesPago.Size = new System.Drawing.Size(932, 407);
             this.tabMorosidadPlanesPago.TabIndex = 1;
             this.tabMorosidadPlanesPago.Text = "Planes de pago";
@@ -353,7 +364,7 @@ namespace COBRANZAS
             // tabMorosidadNotificaciones
             // 
             this.tabMorosidadNotificaciones.Location = new System.Drawing.Point(4, 22);
-            this.tabMorosidadNotificaciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabMorosidadNotificaciones.Margin = new System.Windows.Forms.Padding(2);
             this.tabMorosidadNotificaciones.Name = "tabMorosidadNotificaciones";
             this.tabMorosidadNotificaciones.Size = new System.Drawing.Size(932, 407);
             this.tabMorosidadNotificaciones.TabIndex = 2;
@@ -366,9 +377,9 @@ namespace COBRANZAS
             this.tabCobros.Controls.Add(this.tabOpcionCobros);
             this.tabCobros.ImageKey = "Cobros.png";
             this.tabCobros.Location = new System.Drawing.Point(4, 23);
-            this.tabCobros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabCobros.Margin = new System.Windows.Forms.Padding(2);
             this.tabCobros.Name = "tabCobros";
-            this.tabCobros.Size = new System.Drawing.Size(936, 470);
+            this.tabCobros.Size = new System.Drawing.Size(936, 469);
             this.tabCobros.TabIndex = 3;
             this.tabCobros.Text = "Cobros";
             this.tabCobros.UseVisualStyleBackColor = true;
@@ -382,7 +393,7 @@ namespace COBRANZAS
             this.materialTabSelector2.Depth = 0;
             this.materialTabSelector2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTabSelector2.Location = new System.Drawing.Point(-2, -2);
-            this.materialTabSelector2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.materialTabSelector2.Margin = new System.Windows.Forms.Padding(2);
             this.materialTabSelector2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector2.Name = "materialTabSelector2";
             this.materialTabSelector2.Size = new System.Drawing.Size(938, 39);
@@ -399,7 +410,7 @@ namespace COBRANZAS
             this.tabOpcionCobros.Controls.Add(this.tabConsultarCobros);
             this.tabOpcionCobros.Depth = 0;
             this.tabOpcionCobros.Location = new System.Drawing.Point(-2, 42);
-            this.tabOpcionCobros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabOpcionCobros.Margin = new System.Windows.Forms.Padding(2);
             this.tabOpcionCobros.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabOpcionCobros.Multiline = true;
             this.tabOpcionCobros.Name = "tabOpcionCobros";
@@ -410,9 +421,9 @@ namespace COBRANZAS
             // tabFacturar
             // 
             this.tabFacturar.Location = new System.Drawing.Point(4, 22);
-            this.tabFacturar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabFacturar.Margin = new System.Windows.Forms.Padding(2);
             this.tabFacturar.Name = "tabFacturar";
-            this.tabFacturar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabFacturar.Padding = new System.Windows.Forms.Padding(2);
             this.tabFacturar.Size = new System.Drawing.Size(932, 407);
             this.tabFacturar.TabIndex = 0;
             this.tabFacturar.Text = "Facturar";
@@ -421,9 +432,9 @@ namespace COBRANZAS
             // tabConsultarMorosidad
             // 
             this.tabConsultarMorosidad.Location = new System.Drawing.Point(4, 22);
-            this.tabConsultarMorosidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabConsultarMorosidad.Margin = new System.Windows.Forms.Padding(2);
             this.tabConsultarMorosidad.Name = "tabConsultarMorosidad";
-            this.tabConsultarMorosidad.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabConsultarMorosidad.Padding = new System.Windows.Forms.Padding(2);
             this.tabConsultarMorosidad.Size = new System.Drawing.Size(932, 407);
             this.tabConsultarMorosidad.TabIndex = 1;
             this.tabConsultarMorosidad.Text = "Consultar Morosidad";
@@ -432,7 +443,7 @@ namespace COBRANZAS
             // tabConsultarCobros
             // 
             this.tabConsultarCobros.Location = new System.Drawing.Point(4, 22);
-            this.tabConsultarCobros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabConsultarCobros.Margin = new System.Windows.Forms.Padding(2);
             this.tabConsultarCobros.Name = "tabConsultarCobros";
             this.tabConsultarCobros.Size = new System.Drawing.Size(932, 407);
             this.tabConsultarCobros.TabIndex = 2;
@@ -445,9 +456,9 @@ namespace COBRANZAS
             this.tabConfiguraciones.Controls.Add(this.tabOpcionConfiguraciones);
             this.tabConfiguraciones.ImageKey = "Configuraciones.png";
             this.tabConfiguraciones.Location = new System.Drawing.Point(4, 23);
-            this.tabConfiguraciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabConfiguraciones.Margin = new System.Windows.Forms.Padding(2);
             this.tabConfiguraciones.Name = "tabConfiguraciones";
-            this.tabConfiguraciones.Size = new System.Drawing.Size(936, 470);
+            this.tabConfiguraciones.Size = new System.Drawing.Size(936, 469);
             this.tabConfiguraciones.TabIndex = 4;
             this.tabConfiguraciones.Text = "Configuraciones";
             this.tabConfiguraciones.UseVisualStyleBackColor = true;
@@ -461,7 +472,7 @@ namespace COBRANZAS
             this.materialTabSelector3.Depth = 0;
             this.materialTabSelector3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTabSelector3.Location = new System.Drawing.Point(-2, -2);
-            this.materialTabSelector3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.materialTabSelector3.Margin = new System.Windows.Forms.Padding(2);
             this.materialTabSelector3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector3.Name = "materialTabSelector3";
             this.materialTabSelector3.Size = new System.Drawing.Size(938, 39);
@@ -479,7 +490,7 @@ namespace COBRANZAS
             this.tabOpcionConfiguraciones.Controls.Add(this.tabConfiguracionParametros);
             this.tabOpcionConfiguraciones.Depth = 0;
             this.tabOpcionConfiguraciones.Location = new System.Drawing.Point(-2, 42);
-            this.tabOpcionConfiguraciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabOpcionConfiguraciones.Margin = new System.Windows.Forms.Padding(2);
             this.tabOpcionConfiguraciones.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabOpcionConfiguraciones.Multiline = true;
             this.tabOpcionConfiguraciones.Name = "tabOpcionConfiguraciones";
@@ -490,9 +501,9 @@ namespace COBRANZAS
             // tabConfiguracionUsuarios
             // 
             this.tabConfiguracionUsuarios.Location = new System.Drawing.Point(4, 22);
-            this.tabConfiguracionUsuarios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabConfiguracionUsuarios.Margin = new System.Windows.Forms.Padding(2);
             this.tabConfiguracionUsuarios.Name = "tabConfiguracionUsuarios";
-            this.tabConfiguracionUsuarios.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabConfiguracionUsuarios.Padding = new System.Windows.Forms.Padding(2);
             this.tabConfiguracionUsuarios.Size = new System.Drawing.Size(932, 407);
             this.tabConfiguracionUsuarios.TabIndex = 0;
             this.tabConfiguracionUsuarios.Text = "Usuarios";
@@ -501,9 +512,9 @@ namespace COBRANZAS
             // tabConfiguracionAccesos
             // 
             this.tabConfiguracionAccesos.Location = new System.Drawing.Point(4, 22);
-            this.tabConfiguracionAccesos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabConfiguracionAccesos.Margin = new System.Windows.Forms.Padding(2);
             this.tabConfiguracionAccesos.Name = "tabConfiguracionAccesos";
-            this.tabConfiguracionAccesos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabConfiguracionAccesos.Padding = new System.Windows.Forms.Padding(2);
             this.tabConfiguracionAccesos.Size = new System.Drawing.Size(932, 407);
             this.tabConfiguracionAccesos.TabIndex = 1;
             this.tabConfiguracionAccesos.Text = "Accesos";
@@ -512,7 +523,7 @@ namespace COBRANZAS
             // tabConfiguracionModulos
             // 
             this.tabConfiguracionModulos.Location = new System.Drawing.Point(4, 22);
-            this.tabConfiguracionModulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabConfiguracionModulos.Margin = new System.Windows.Forms.Padding(2);
             this.tabConfiguracionModulos.Name = "tabConfiguracionModulos";
             this.tabConfiguracionModulos.Size = new System.Drawing.Size(932, 407);
             this.tabConfiguracionModulos.TabIndex = 2;
@@ -522,7 +533,7 @@ namespace COBRANZAS
             // tabConfiguracionParametros
             // 
             this.tabConfiguracionParametros.Location = new System.Drawing.Point(4, 22);
-            this.tabConfiguracionParametros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabConfiguracionParametros.Margin = new System.Windows.Forms.Padding(2);
             this.tabConfiguracionParametros.Name = "tabConfiguracionParametros";
             this.tabConfiguracionParametros.Size = new System.Drawing.Size(932, 407);
             this.tabConfiguracionParametros.TabIndex = 3;
@@ -537,7 +548,8 @@ namespace COBRANZAS
             this.menuServicios,
             this.menuMorosidad,
             this.menuCobros,
-            this.menuConfiguraciones});
+            this.menuConfiguraciones,
+            this.reportesToolStripMenuItem});
             this.menuPrincipal.Location = new System.Drawing.Point(2, 52);
             this.menuPrincipal.Name = "menuPrincipal";
             this.menuPrincipal.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -557,14 +569,14 @@ namespace COBRANZAS
             // registroToolStripMenuItem
             // 
             this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
-            this.registroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.registroToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.registroToolStripMenuItem.Text = "Registro";
             this.registroToolStripMenuItem.Click += new System.EventHandler(this.registroToolStripMenuItem_Click);
             // 
             // consultasToolStripMenuItem
             // 
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.consultasToolStripMenuItem.Text = "Consultas";
             // 
             // menuServicios
@@ -686,6 +698,77 @@ namespace COBRANZAS
             this.parametrosToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.parametrosToolStripMenuItem.Text = "Parametros";
             // 
+            // reportesToolStripMenuItem
+            // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reporteClientesToolStripMenuItem});
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.reportesToolStripMenuItem.Text = "Reportes";
+            // 
+            // tabReportes
+            // 
+            this.tabReportes.Controls.Add(this.tabOpcionReportes);
+            this.tabReportes.Controls.Add(this.tabSelectorReportes);
+            this.tabReportes.ImageKey = "Reporte.png";
+            this.tabReportes.Location = new System.Drawing.Point(4, 23);
+            this.tabReportes.Name = "tabReportes";
+            this.tabReportes.Size = new System.Drawing.Size(936, 469);
+            this.tabReportes.TabIndex = 5;
+            this.tabReportes.Text = "Reportes";
+            this.tabReportes.UseVisualStyleBackColor = true;
+            // 
+            // tabSelectorReportes
+            // 
+            this.tabSelectorReportes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabSelectorReportes.BaseTabControl = this.tabOpcionReportes;
+            this.tabSelectorReportes.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
+            this.tabSelectorReportes.Depth = 0;
+            this.tabSelectorReportes.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.tabSelectorReportes.Location = new System.Drawing.Point(-1, 3);
+            this.tabSelectorReportes.Margin = new System.Windows.Forms.Padding(2);
+            this.tabSelectorReportes.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tabSelectorReportes.Name = "tabSelectorReportes";
+            this.tabSelectorReportes.Size = new System.Drawing.Size(938, 39);
+            this.tabSelectorReportes.TabIndex = 2;
+            this.tabSelectorReportes.Text = "materialTabSelector1";
+            // 
+            // tabOpcionReportes
+            // 
+            this.tabOpcionReportes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabOpcionReportes.Controls.Add(this.tabReporteClientes);
+            this.tabOpcionReportes.Depth = 0;
+            this.tabOpcionReportes.ImageList = this.listaImagenes;
+            this.tabOpcionReportes.Location = new System.Drawing.Point(-2, 40);
+            this.tabOpcionReportes.Margin = new System.Windows.Forms.Padding(2);
+            this.tabOpcionReportes.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tabOpcionReportes.Multiline = true;
+            this.tabOpcionReportes.Name = "tabOpcionReportes";
+            this.tabOpcionReportes.SelectedIndex = 0;
+            this.tabOpcionReportes.Size = new System.Drawing.Size(940, 432);
+            this.tabOpcionReportes.TabIndex = 3;
+            // 
+            // tabReporteClientes
+            // 
+            this.tabReporteClientes.ImageKey = "Reporte_2.png";
+            this.tabReporteClientes.Location = new System.Drawing.Point(4, 23);
+            this.tabReporteClientes.Margin = new System.Windows.Forms.Padding(2);
+            this.tabReporteClientes.Name = "tabReporteClientes";
+            this.tabReporteClientes.Padding = new System.Windows.Forms.Padding(2);
+            this.tabReporteClientes.Size = new System.Drawing.Size(932, 405);
+            this.tabReporteClientes.TabIndex = 1;
+            this.tabReporteClientes.Text = "ReporteClientes";
+            this.tabReporteClientes.UseVisualStyleBackColor = true;
+            // 
+            // reporteClientesToolStripMenuItem
+            // 
+            this.reporteClientesToolStripMenuItem.Name = "reporteClientesToolStripMenuItem";
+            this.reporteClientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reporteClientesToolStripMenuItem.Text = "Reporte Clientes";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -696,7 +779,7 @@ namespace COBRANZAS
             this.DrawerShowIconsWhenHidden = true;
             this.DrawerTabControl = this.tabMenuPrincipal;
             this.MainMenuStrip = this.menuPrincipal;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmPrincipal";
             this.Padding = new System.Windows.Forms.Padding(2, 52, 2, 2);
             this.Text = "Sistema de Cobranzas";
@@ -714,6 +797,8 @@ namespace COBRANZAS
             this.tabOpcionConfiguraciones.ResumeLayout(false);
             this.menuPrincipal.ResumeLayout(false);
             this.menuPrincipal.PerformLayout();
+            this.tabReportes.ResumeLayout(false);
+            this.tabOpcionReportes.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -774,6 +859,12 @@ namespace COBRANZAS
         private System.Windows.Forms.ToolStripMenuItem accesosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modulosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem parametrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabReportes;
+        private MaterialSkin.Controls.MaterialTabControl tabOpcionReportes;
+        private System.Windows.Forms.TabPage tabReporteClientes;
+        private MaterialSkin.Controls.MaterialTabSelector tabSelectorReportes;
+        private System.Windows.Forms.ToolStripMenuItem reporteClientesToolStripMenuItem;
     }
 }
 
